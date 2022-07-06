@@ -1,4 +1,5 @@
 local icons = require("pitoniak32.icons")
+local keymap_utils = require("pitoniak32.keymap_utils")
 
 local signs = {
   { name = "DiagnosticSignError", text = icons.diagnostics.Error },
@@ -40,6 +41,8 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 M = {}
 
+local nnoremap = keymap_utils.nnoremap
+
 M.default_attach = function(client, bufnr)
   if client.server_capabilities.document_highlight then
     local status_ok, illuminate = pcall(require, "illuminate")
@@ -49,8 +52,21 @@ M.default_attach = function(client, bufnr)
     illuminate.on_attach(client)
   end
 
+  -- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", gen_opts},
+  nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("gd", "<cmd>lua vim.lsp.buf.declaration()<cr>", { silent = true, buffer = bufnr })
+  nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("<leader>fd", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
+  nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
+  nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", { silent = true, buffer = bufnr })
+  -- { "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts },
   -- Set all keymaps for current buffer related to lsp.
-  require("pitoniak32.keymaps").set_buf_lsp_keymaps(bufnr)
 end
 
 return M
