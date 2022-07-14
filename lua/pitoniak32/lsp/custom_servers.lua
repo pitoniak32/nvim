@@ -40,7 +40,8 @@ M.servers = {
     },
   },
 	pyright = {},
-  gopls = {},   
+  gopls = {},
+  zls = {},
 }
 
 return M

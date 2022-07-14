@@ -24,7 +24,7 @@ o.showmode = false
 o.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- vimwiki
-vim.g.vimwiki_list = { { path = "~/.vimwiki/vimwiki/" } }
+vim.g.vimwiki_list = { { path = "~/vimwiki/" } }
 
 -- winbar formatting
 o.winbar = "%=%m %f"
