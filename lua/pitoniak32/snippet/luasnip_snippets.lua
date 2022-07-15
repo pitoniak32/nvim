@@ -17,6 +17,6 @@ ls.add_snippets("typescript", {
 	),
 })
 
-ls.add_snippets("", {
+ls.add_snippets("lua", {
 	ls.parser.parse_snippet("expand", "--expand to this"),
 })
