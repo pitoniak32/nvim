@@ -1,5 +1,5 @@
 local icons = require("pitoniak32.icons")
-local keymap_utils = require("pitoniak32.keymap_utils")
+local keymap_utils = require("pitoniak32.keymap.utils")
 
 local signs = {
   { name = "DiagnosticSignError", text = icons.diagnostics.Error },

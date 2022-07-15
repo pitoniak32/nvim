@@ -1,4 +1,4 @@
-local map_util = require ('pitoniak32.keymap_utils')
+local map_util = require ('pitoniak32.keymaps.utils')
 
 local gen_opts =  map_util.gen_opts
 local leader_map = map_util.leader_map
