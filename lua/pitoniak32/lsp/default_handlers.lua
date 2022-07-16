@@ -1,5 +1,5 @@
 local icons = require("pitoniak32.icons")
-local keymap_utils = require("pitoniak32.keymap.utils")
+local keymap_utils = require("pitoniak32.keymaps.utils")
 
 local signs = {
   { name = "DiagnosticSignError", text = icons.diagnostics.Error },
@@ -64,7 +64,7 @@ M.default_attach = function(client, bufnr)
   nnoremap("]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', { silent = true, buffer = bufnr })
   nnoremap("gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { silent = true, buffer = bufnr })
   nnoremap("<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true, buffer = bufnr })
-  nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", { silent = true, buffer = bufnr })
+  nnoremap("<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", { silent = true, buffer = bufnr })
   -- { "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts },
   -- Set all keymaps for current buffer related to lsp.
 end
