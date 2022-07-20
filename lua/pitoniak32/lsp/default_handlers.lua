@@ -55,7 +55,6 @@ M.default_attach = function(client, bufnr)
   -- { "n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", gen_opts},
   nnoremap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true, buffer = bufnr })
   nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { silent = true, buffer = bufnr })
-  nnoremap("gd", "<cmd>lua vim.lsp.buf.declaration()<cr>", { silent = true, buffer = bufnr })
   nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", { silent = true, buffer = bufnr })
   nnoremap("gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr })
   nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", { silent = true, buffer = bufnr })

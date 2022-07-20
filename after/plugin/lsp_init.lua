@@ -27,13 +27,6 @@ if not lspconfig_status_ok then
 	return
 end
 
-local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not lsp_installer_status_ok then
-	return
-end
-
-lsp_installer.setup({})
-
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
 
